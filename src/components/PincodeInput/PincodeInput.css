@@ -1,0 +1,61 @@
+div{
+    display: block;
+    justify-content: center;
+    color: black;
+    max-height: 180px;
+}
+
+
+h4{
+    font-size: 2rem;
+}
+
+.square:focus {
+    background-color: rgb(225, 236, 247);
+}
+
+.square{
+    margin-left: 10px;
+    height: 40px;
+    width: 40px;
+    font-size: 3.5rem;
+    text-align: center;
+    font-family: 'Monofett', cursive;
+    border-radius: 30%;
+}
+
+.square[type="password"] {
+    height: 40px;
+    width: 40px;
+    font-size:3.5rem;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 30%;
+}
+
+.validateIcon{
+    position: absolute;
+    font-size: 2rem;
+    top: 16.5vh;
+    left: 70vw;
+}
+
+
+
+.border-danger{
+    background-color: lightcoral;
+    box-shadow: rgba(255, 0, 0, 0.05) 0 6px 24px, rgba(255, 0, 0, 0.1) 0 0 0 5px;
+}
+
+.border-success{
+    background-color: lightgreen;
+    box-shadow: rgba(0, 255, 0, 0.05) 0 6px 24px, rgba(0, 255, 0, 0.1) 0 0 0 5px;
+}
+.text-success{
+    color: green;
+}
+.text-danger{
+    color: red;
+}
+
+
