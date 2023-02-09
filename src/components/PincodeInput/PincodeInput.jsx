@@ -1,8 +1,9 @@
 import "./PincodeInput.css";
 
-function PincodeInput() {
+function PincodeInput( props ) {
   const user = { email: "maxence.allart@gmail.com", pincode: 1234 };
 
+  const { setScreen } = props;
 
   const handleInput = (e) => {
     const value = e.target.value;
@@ -21,7 +22,6 @@ function PincodeInput() {
         const squares = document.querySelectorAll(".square");
         let pin = "";
         squares.forEach((input) => (pin += input.value));
-        console.log(pin);
 
         if (+pin === +user.pincode) {
           squares.forEach((input) => {
@@ -30,12 +30,13 @@ function PincodeInput() {
             input.classList.replace("text-danger", "text-success");
             input.classList.replace("text-dark", "text-success");
           });
+          e.target.type = "password";
+          document.querySelector(".validateIcon").innerHTML = "✅😜";
+          localStorage.setItem('userMail', user.email);
           setTimeout(() => {
-            e.target.type = "password";
+            setScreen("loginOK");
           }, 750);
 
-          document.querySelector(".validateIcon").innerHTML = "✅😜";
-          //TODO Changer de screen ...
         } else {
           squares.forEach((input) => {
             input.classList.replace("border-dark", "border-danger");
