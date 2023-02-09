@@ -1,25 +1,36 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import TodoList from "../../components/TodoList/TodoList";
 
-function TodoListScreen()
-{
+function TodoListScreen() {
 
-    // const getTodos = async() => {
-    //     try{
-    //         // const response = await fetch(`http://localhost:1337/todo`);
-    //         // const json = response.json();
-    //         // console.log(json);
-    //     }
-    //     catch(error){
-    //         console.error(error);
-    //     }
-    // }
+    const [todoList, setTodoList] = useState([]);
 
-    // useEffect(() => getTodos, []);
+    useEffect(()=>
+    {
+        const fetchData = async () =>
+        {
+            const resp = await fetch("http://localhost:1337/todo");
+            const todoListData = await resp.json();
+            setTodoList(todoListData.data);
+        }
+        fetchData();
+    }
+    , [])
 
     return ( 
-    <div className="">
-        Ici c'est la page Todo List Screen
-    </div> );
+    <>
+        <div>
+            Ici la liste des todos :
+            <div>
+                {
+                todoList.map(todo =>
+                    {
+                        return <div>{<TodoList />}</div>
+                    })
+                }
+            </div>
+        </div>
+    </>);
 }
 
 export default TodoListScreen;

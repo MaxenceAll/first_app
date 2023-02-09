@@ -32,7 +32,7 @@ function App()
           <button className="btn" onClick={navigate} id="landing">Retour landing</button>
         </div>
 
-        <div className="">
+        <div className="App container">
           {screen === "todolist" && <TodoListScreen setScreen={setScreen}/>}
           {screen === "tasklist" && <TaskListScreen setScreen={setScreen}/>}
           {screen === "task" && <TaskDetailScreen setScreen={setScreen}/>}
