@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import TodoList from "../../components/TodoList/TodoList";
+import './TodoListScreen.css';
 
 function TodoListScreen() {
 
@@ -19,14 +20,26 @@ function TodoListScreen() {
 
     return ( 
     <>            
-        <div>
-        Ici la liste des todos :
-            {
-            todoList.map(todo =>
+        <div className="">
+            <h1>Bonjour {localStorage.getItem('userMail')}</h1>
+            Voici la liste des choses à faire !
+
+            <div className="todos-container">
                 {
-                    return <div className="" key={todo.id}>{<TodoList id={todo.id} description={todo.description} title={todo.title} is_favorite={todo.is_favorite} />}</div>
-                })
-            }
+                todoList.map(todo =>
+                    {
+                        return (
+
+                                    <div className="todo-box" key={todo.id}>
+                                        {<TodoList id={todo.id} description={todo.description} title={todo.title} is_favorite={todo.is_favorite} />}
+                                    </div>
+
+                                )
+                    })
+                
+                }            
+            </div>
+            
         </div>
     </>);
 }

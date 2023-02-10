@@ -1,0 +1,12 @@
+.todos-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.todo-box{
+    width: 100%;
+    margin: 0;
+    padding: 2%;
+}

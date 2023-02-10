@@ -69,8 +69,8 @@ function PincodeInput( props ) {
   
   return (
     <>
-        <div className="PincodeInput-Container">
-      <h4>🔑 Pin code?</h4>        
+      <div className="d-flex justify-content-center py-1">
+        <h4>🔑 Pin code?</h4>        
 
           <input
               id="pin1"

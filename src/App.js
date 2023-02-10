@@ -34,7 +34,7 @@ function App()
             {screen === "task" && <TaskDetailScreen setScreen={setScreen}/>}
           </div> */}
       </div>
-          <div className="btn-test">
+          <div className="d-flex pt-3 justify-content-center">
             <button className="btn btn-primary m-2" onClick={navigate} id="todolist">Todo List</button>
             <button className="btn btn-info m-2" onClick={navigate} id="tasklist">Task List</button>
             <button className="btn btn-secondary m-2" onClick={navigate} id="task">Task Detail</button>

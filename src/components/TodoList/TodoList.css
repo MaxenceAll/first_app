@@ -1,11 +1,11 @@
 .TodoBox{
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     flex-wrap: wrap;
     padding:5%;
     margin: 2%;
-    background-color: gray;
+    background-color: blanchedalmond;
     border: 4px ridge #1C6EA4;
     border-radius: 40px 0px 40px 0px;
 

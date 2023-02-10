@@ -1,67 +1,16 @@
-.PincodeInput-Container{
-    display: flex;
-    flex-direction: row;
-    color: black;
-}
-
-
-h4{
-    font-size: 2rem;
-}
-
-.square:focus {
-    background-color: rgb(225, 236, 247);
-}
-
 .square{
-    margin-left: 10px;
     height: 40px;
     width: 40px;
-    font-size: 2rem;
-    text-align: center;
-    font-family: 'Monofett', cursive;
-    border-radius: 30%;
+    font-size: 1.5em;
+    padding: 12px;
 }
 
 .square[type="password"] {
-    height: 40px;
-    width: 40px;
-    font-size:2rem;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    border-radius: 30%;
+    padding: 12px;
+    font-size: 2em;
 }
 
-.validateIcon{
-    position: relative;
+h4{
     font-size: 2rem;
+    padding-right: 5%;
 }
-
-
-
-
-
-
-
-
-
-
-/* 
-
-.border-danger{
-    background-color: lightcoral;
-    box-shadow: rgba(255, 0, 0, 0.05) 0 6px 24px, rgba(255, 0, 0, 0.1) 0 0 0 5px;
-}
-
-.border-success{
-    background-color: lightgreen;
-    box-shadow: rgba(0, 255, 0, 0.05) 0 6px 24px, rgba(0, 255, 0, 0.1) 0 0 0 5px;
-}
-.text-success{
-    color: green;
-}
-.text-danger{
-    color: red;
-}
- */
-
