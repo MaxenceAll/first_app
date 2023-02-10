@@ -1,5 +1,4 @@
 import PincodeInput from "../../components/PincodeInput/PincodeInput";
-import { useState } from "react";
 
 function LandingScreen(props) {
 
