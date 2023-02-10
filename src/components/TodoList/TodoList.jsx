@@ -2,9 +2,6 @@ import "./TodoList.css";
 
 function TodoList(props) {
 
-    // const { id } = props;
-    // const { title } = props;
-    // const { description }  = props;
     const {id , title , description} = props;
 
   return (

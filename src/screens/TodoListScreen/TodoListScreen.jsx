@@ -26,12 +26,14 @@ function TodoListScreen() {
 
             <div className="todos-container">
                 {
+                
                 todoList.map(todo =>
                     {
+                        const {id, title, description, is_favorite} = todo;
                         return (
 
-                                    <div className="todo-box" key={todo.id}>
-                                        {<TodoList id={todo.id} description={todo.description} title={todo.title} is_favorite={todo.is_favorite} />}
+                                    <div className="todo-box" key={id}>
+                                        {<TodoList id={id} description={description} title={title} is_favorite={is_favorite} />}
                                     </div>
 
                                 )

@@ -22,7 +22,7 @@ function TodoEditorScreen()
     return ( 
     <div className="">
 
-            <TodoEditor />
+            <TodoEditor todos={todoList} />
                 
     </div> );
 }

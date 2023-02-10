@@ -8,7 +8,6 @@ import TodoListScreen from './screens/TodoListScreen/TodoListScreen';
 
 import { useState } from 'react';
 import TestComponent from './components/TestComponent';
-import TodoEditor from "./screens/TodoEditor/TodoEditorScreen";
 import TodoEditorScreen from "./screens/TodoEditor/TodoEditorScreen";
 
 function App()
