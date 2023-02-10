@@ -6,7 +6,7 @@ function LandingScreen(props) {
     const { setScreen } = props;
 
     return ( 
-    <div className="text-center pt-2">
+    <div className="">
         <PincodeInput  setScreen={setScreen} />
     </div> );
 }

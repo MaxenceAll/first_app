@@ -31,10 +31,10 @@ function PincodeInput( props ) {
             input.classList.replace("text-dark", "text-success");
           });
           e.target.type = "password";
-          document.querySelector(".validateIcon").innerHTML = "✅😜";
+          document.querySelector(".validateIcon").innerHTML = "LOGIN : .... SUCCESS ✅😜";
           localStorage.setItem('userMail', user.email);
           setTimeout(() => {
-            setScreen("loginOK");
+            setScreen("todolist");
           }, 750);
 
         } else {
@@ -69,57 +69,46 @@ function PincodeInput( props ) {
   
   return (
     <>
-        <h4>🔑 Saisir votre code</h4>
-        
-      <div className="d-flex justify-content-center">
+        <div className="PincodeInput-Container">
+      <h4>🔑 Pin code?</h4>        
 
-        <input
-            id="pin1"
+          <input
+              id="pin1"
+              type="text"
+              className="square form-control border border-dark text-dark me-1"
+              onInput={handleInput}
+              onClick={handleClick}
+          >
+          </input>
+
+          <input
+            id="pin2"
             type="text"
             className="square form-control border border-dark text-dark me-1"
             onInput={handleInput}
             onClick={handleClick}
-        >
-        </input>
-        
+          >
+          </input>
 
+          <input
+            id="pin3"
+            type="text"
+            className="square form-control border border-dark text-dark me-1"
+            onInput={handleInput}
+            onClick={handleClick}
+          >
+          </input>
 
-        <input
-          id="pin2"
-          type="text"
-          className="square form-control border border-dark text-dark me-1"
-          onInput={handleInput}
-          onClick={handleClick}
-        >
+          <input
+            id="pin4"
+            type="text"
+            className="square form-control border border-dark text-dark"
+            onInput={handleInput}
+            onClick={handleClick}
+          >
+          </input>        
 
-        </input>
-
-
-        <input
-          id="pin3"
-          type="text"
-          className="square form-control border border-dark text-dark me-1"
-          onInput={handleInput}
-          onClick={handleClick}
-        >
-
-        </input>
-
-
-        <input
-          id="pin4"
-          type="text"
-          className="square form-control border border-dark text-dark"
-          onInput={handleInput}
-          onClick={handleClick}
-        >
-
-        </input>
-
-        
-
-      </div>
-
+        </div>
       <span className="validateIcon">   </span>
     </>
   );

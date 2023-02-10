@@ -18,17 +18,15 @@ function TodoListScreen() {
     , [])
 
     return ( 
-    <>
+    <>            
         <div>
-            Ici la liste des todos :
-            <div>
+        Ici la liste des todos :
+            {
+            todoList.map(todo =>
                 {
-                todoList.map(todo =>
-                    {
-                        return <div>{<TodoList />}</div>
-                    })
-                }
-            </div>
+                    return <div className="" key={todo.id}>{<TodoList id={todo.id} description={todo.description} title={todo.title} is_favorite={todo.is_favorite} />}</div>
+                })
+            }
         </div>
     </>);
 }

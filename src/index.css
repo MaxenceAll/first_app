@@ -5,13 +5,12 @@ html{
   display: flex;
   justify-content: center;
   font-family: 'Trebuchet MS', Arial, sans-serif;
+
 }
 
 
 
 .App {
   min-width: 320px !important;
-  max-width: 480px !important;
-  
-   
+  max-width: 480px !important; 
 }
