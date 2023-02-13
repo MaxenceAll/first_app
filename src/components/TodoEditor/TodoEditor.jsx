@@ -37,14 +37,14 @@ function TodoEditor(props) {
         nomTodoRef.current.value = selectedTodo ? selectedTodo.title : "";
         descTodoRef.current.value = selectedTodo ? selectedTodo.description : "";
 
-        for ( let user of users )
-        {
-            if ( user.id == selectedTodo.id_customer)
-            {
-                console.log("trouvé! : "+user.id);
+        if (selectedTodo && typeof selectedTodo === "object" && selectedTodo.hasOwnProperty('id_customer')) {
+            for ( let user of users ) {
+              if ( user.id == selectedTodo.id_customer) {
                 customerDispoSelector.current.options[user.id].selected = true;
-            }    
-        }
+              }    
+            }
+          }
+          
         
       };
       
@@ -192,10 +192,10 @@ function TodoEditor(props) {
 
                     <hr/>
                     <div className="d-flex justify-content-center">
-                        <button type="submit" className="btn btn-success m-1"   onClick={handleSubmit}  id="add_todo_submit" ref={add_todo_submitRef}><RiAddCircleFill /></button>
-                        <button type="submit" className="btn btn-secondary m-1" onClick={handleSubmit}  id="modif_todo_submit" ref={modif_todo_submitRef}><RiExchangeFill/></button>
-                        <button type="submit" className="btn btn-warning m-1"   onClick={handleSubmit}  id="supp_todo_submit" ref={supp_todo_submitRef}><RiDeleteBin6Fill/></button>
-                        <button type="submit" className="btn btn-danger m-1"    onClick={handleSubmit}  id="del_todo_submit" ref={del_todo_submitRef}><RiDeleteBack2Fill/></button>
+                        <button type="submit" className="btn btn-success m-1"   onClick={handleSubmit}  id="add_todo_submit" ref={add_todo_submitRef}>  &nbsp; <RiAddCircleFill /> &nbsp;</button>
+                        <button type="submit" className="btn btn-secondary m-1" onClick={handleSubmit}  id="modif_todo_submit" ref={modif_todo_submitRef}> &nbsp;  <RiExchangeFill/> &nbsp;</button>
+                        <button type="submit" className="btn btn-warning m-1"   onClick={handleSubmit}  id="supp_todo_submit" ref={supp_todo_submitRef}>  &nbsp; <RiDeleteBin6Fill/> &nbsp;</button>
+                        <button type="submit" className="btn btn-danger m-1"    onClick={handleSubmit}  id="del_todo_submit" ref={del_todo_submitRef}>  &nbsp; <RiDeleteBack2Fill/> &nbsp;</button>
                     </div>
             </form>
         <hr/>

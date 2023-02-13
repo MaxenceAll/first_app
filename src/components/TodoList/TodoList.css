@@ -9,4 +9,12 @@
     border: 4px ridge #1C6EA4;
     border-radius: 40px 0px 40px 0px;
 
+    height: 140px;
+}
+
+.btn-container
+{
+    position: relative;
+    left: 270px;
+    top: -50px;
 }
