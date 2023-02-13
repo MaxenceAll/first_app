@@ -1,15 +1,19 @@
 import { useEffect , useState , useRef } from "react";
 
+import { RiAddCircleFill, RiExchangeFill , RiDeleteBin6Fill , RiDeleteBack2Fill} from 'react-icons/ri';
+
+
 function TodoEditor(props) {
 
-    const {todos} = props;
+    const {todos , users} = props;
 
     const TodoEditorForm = useRef();
 
     const nomTodoRef = useRef();
     const descTodoRef = useRef();
+    const customerDispoSelector = useRef();
     const idTodoRef = useRef();
-    const todoFormSelector = useRef();
+    const todoDispoSelector = useRef();
 
     const add_todo_submitRef= useRef();
     const modif_todo_submitRef= useRef();
@@ -19,16 +23,31 @@ function TodoEditor(props) {
 
     useEffect( ()=> {
 
+        console.log("Users: "+users);
+        console.log(todos);
+
     }, [])
 
 
-    const handleSelectChange = (event) => {
+    const handleSelectChangeTodoDispo = (event) => {
+
         const selectedId = event.target.value;
         const selectedTodo = todos.find((todo) => todo.id == selectedId);
         idTodoRef.current.value = selectedTodo ? selectedTodo.id : "";
         nomTodoRef.current.value = selectedTodo ? selectedTodo.title : "";
         descTodoRef.current.value = selectedTodo ? selectedTodo.description : "";
+
+        for ( let user of users )
+        {
+            if ( user.id == selectedTodo.id_customer)
+            {
+                console.log("trouvé! : "+user.id);
+                customerDispoSelector.current.options[user.id].selected = true;
+            }    
+        }
+        
       };
+      
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -121,11 +140,8 @@ function TodoEditor(props) {
         }
     };
 
-
     return (
-
-    <> {console.log(todos)}
-        
+    <>         
             <form id="TodoEditorForm" ref={TodoEditorForm}>
 
                     <div className="container m-5">
@@ -135,12 +151,14 @@ function TodoEditor(props) {
                     </div>
 
                     <div className="input-group mb-3 mt-3">
-                        <label className="input-group-text w-50" htmlFor="input-todo-select">Todos disponibles :</label>
-                            <select className="form-select" id="input-todo-select" name="todoFormSelect" ref={todoFormSelector} onChange={handleSelectChange}>
+                        <label className="input-group-text w-50" htmlFor="tododispo-select">Todos disponibles :</label>
+                            <select className="form-select" id="tododispo-select" name="todoDispoSelector" ref={todoDispoSelector} onChange={handleSelectChangeTodoDispo}>
                                 <option defaultValue>Ajouter...</option>
-                                {todos.map((todo) => <option key={todo.id} value={todo.id}>{todo.title} </option>)}
+                                {todos.map((todo) => <option key={todo.id} value={todo.id}> {todo.title} </option>)}
                             </select>
                     </div>
+
+                    <hr />
 
                     <div className="mb-3">
                         <label className="form-label">Contenu de la todo ! :</label>
@@ -157,23 +175,32 @@ function TodoEditor(props) {
                         </div>
                     </div>       
 
+                    <div className="input-group mb-3 mt-3">
+                        <label className="input-group-text w-50" htmlFor="customerdispo-select">Propriétaires dispos :</label>
+                            <select className="form-select" id="customerdispo-select" name="customerDispoSelector" ref={customerDispoSelector}>
+                                <option defaultValue>Choisir...</option>
+                                {users.map((users) => <option key={'customer:'+users.id} value={users.email}> ({users.id}){users.email} </option>)}
+                            </select>
+                    </div>            
+
                     <div className="mb-3">
                         <div className="input-group">
                             <span className="input-group-text w-25">Id(readonly) :</span>
-                            <textarea ref={idTodoRef} id="idTodo" className="form-control text-bg-dark" readOnly placeholder="id here"></textarea>
+                            <textarea ref={idTodoRef} id="idTodo" className="form-control text-bg-secondary" readOnly placeholder="id here"></textarea>
                         </div>
                     </div> 
 
                     <hr/>
-
-                    <button type="submit" className="btn btn-success m-1"   onClick={handleSubmit}  id="add_todo_submit" ref={add_todo_submitRef}>Ajouter</button>
-                    <button type="submit" className="btn btn-secondary m-1" onClick={handleSubmit}  id="modif_todo_submit" ref={modif_todo_submitRef}>Modifier</button>
-                    <button type="submit" className="btn btn-warning m-1"   onClick={handleSubmit}  id="supp_todo_submit" ref={supp_todo_submitRef}>Supprimer</button>
-                    <button type="submit" className="btn btn-danger m-1"    onClick={handleSubmit}  id="del_todo_submit" ref={del_todo_submitRef}>Effacer pour toujours !</button>
-
+                    <div className="d-flex justify-content-center">
+                        <button type="submit" className="btn btn-success m-1"   onClick={handleSubmit}  id="add_todo_submit" ref={add_todo_submitRef}><RiAddCircleFill /></button>
+                        <button type="submit" className="btn btn-secondary m-1" onClick={handleSubmit}  id="modif_todo_submit" ref={modif_todo_submitRef}><RiExchangeFill/></button>
+                        <button type="submit" className="btn btn-warning m-1"   onClick={handleSubmit}  id="supp_todo_submit" ref={supp_todo_submitRef}><RiDeleteBin6Fill/></button>
+                        <button type="submit" className="btn btn-danger m-1"    onClick={handleSubmit}  id="del_todo_submit" ref={del_todo_submitRef}><RiDeleteBack2Fill/></button>
+                    </div>
             </form>
-            <hr />
-    </>);
+        <hr/>
+    </>
+    );
 }
 
 export default TodoEditor;
