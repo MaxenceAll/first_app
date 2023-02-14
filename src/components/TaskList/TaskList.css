@@ -12,3 +12,12 @@
     width: 37px;
     height:37px;
 }
+
+.prioritiesbtn{
+    display: flex;
+    justify-content: flex-end;
+    align-self: center;
+    flex-direction: row;
+    width: 20px;
+    height: 20px;
+}

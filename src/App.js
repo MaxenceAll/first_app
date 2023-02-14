@@ -21,15 +21,6 @@ function App()
 
   return (
     <>
-      <div className="App container">
-        {screen === "landing" && <LandingScreen setScreen={setScreen}/>}
-        {screen === "testOK" && <TestComponent/>}
-        {screen === "todolist" && <TodoListScreen setScreen={setScreen}/>}
-        {screen === "tasklist" && <TaskListScreen setScreen={setScreen}/>}
-        {screen === "task" && <TaskDetailScreen setScreen={setScreen}/>}
-        {screen === "edittodo" && <TodoEditorScreen setScreen={setScreen}/>}
-      </div>
-
       <div className="d-flex p-3 justify-content-center">
         <button className="btn btn-primary m-2" onClick={navigate} id="todolist">Todo List</button>
         <button className="btn btn-info m-2" onClick={navigate} id="tasklist">Task List</button>
@@ -38,6 +29,16 @@ function App()
         <button className="btn btn-danger m-2" onClick={navigate} id="landing">Retour landing</button>
         <button className="btn btn-outline-danger m-2" onClick={navigate} id="testOK">TEST</button>
       </div>
+
+      <div className="App container">
+        {screen === "landing" && <LandingScreen setScreen={setScreen}/>}
+        {screen === "testOK" && <TestComponent setScreen={setScreen}/>}
+        {screen === "todolist" && <TodoListScreen setScreen={setScreen}/>}
+        {screen === "tasklist" && <TaskListScreen setScreen={setScreen}/>}
+        {screen === "task" && <TaskDetailScreen setScreen={setScreen}/>}
+        {screen === "edittodo" && <TodoEditorScreen setScreen={setScreen}/>}
+      </div>
+
     </>    
   );
 }
