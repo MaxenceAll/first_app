@@ -1,4 +1,4 @@
-import { useEffect , useState , useRef } from "react";
+import { useEffect , useRef } from "react";
 
 import { RiAddCircleFill, RiExchangeFill , RiDeleteBin6Fill , RiDeleteBack2Fill} from 'react-icons/ri';
 
@@ -23,23 +23,21 @@ function TodoEditor(props) {
 
     useEffect( ()=> {
 
-        console.log("Users: "+users);
-        console.log(todos);
-
     }, [])
 
 
     const handleSelectChangeTodoDispo = (event) => {
 
         const selectedId = event.target.value;
-        const selectedTodo = todos.find((todo) => todo.id == selectedId);
+        const selectedTodo = todos.find((todo) => todo.id === parseInt(selectedId));
         idTodoRef.current.value = selectedTodo ? selectedTodo.id : "";
         nomTodoRef.current.value = selectedTodo ? selectedTodo.title : "";
         descTodoRef.current.value = selectedTodo ? selectedTodo.description : "";
 
         if (selectedTodo && typeof selectedTodo === "object" && selectedTodo.hasOwnProperty('id_customer')) {
             for ( let user of users ) {
-              if ( user.id == selectedTodo.id_customer) {
+                //TODO verif si === is ok
+              if ( user.id === selectedTodo.id_customer) {
                 customerDispoSelector.current.options[user.id].selected = true;
               }    
             }

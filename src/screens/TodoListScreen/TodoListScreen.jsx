@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import TodoList from "../../components/TodoList/TodoList";
 import './TodoListScreen.css';
 
-function TodoListScreen() {
-
+function TodoListScreen() 
+{
     const [todoList, setTodoList] = useState([]);
 
     useEffect(()=>
@@ -39,7 +39,7 @@ function TodoListScreen() {
                                 )
                     })
                 
-                }            
+                }
             </div>
             
         </div>
