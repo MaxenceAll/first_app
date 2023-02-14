@@ -56,6 +56,12 @@ function TaskListScreen()
                                     newTaskList.sort((a,b)=> (a.id<b.id)? -1 : 1);
                                     setTaskList(newTaskList);
                                 }}
+                                onFinished ={ (data) => {
+                                    const newTaskList = taskList.filter(task=> task.id!==data.id);
+                                    newTaskList.push(data);
+                                    newTaskList.sort((a,b)=> (a.id<b.id)? -1 : 1);
+                                    setTaskList(newTaskList);
+                                }}                                
                               />
                             }
                           </div>

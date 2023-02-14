@@ -1,17 +1,17 @@
 import "./TaskList.css";
 import { HiXCircle } from 'react-icons/hi2';
 import { FcHighPriority , FcMediumPriority , FcLowPriority } from "react-icons/fc";
-import { useState , useEffect  } from "react";
+import { useState } from "react";
 
 function TastkList(props) {
 
-    let { id, title, description, deadline_date, is_completed, id_priority, id_Todo , onDeleted=()=>{} , onPriority=()=>{} } = props;
+    let { id, title, description, deadline_date, is_completed, id_priority, id_Todo , onDeleted=()=>{} , onPriority=()=>{} , onFinished=()=>{}} = props;
 
-    const [completed, setCompleted] = useState();
+    const [completed, setCompleted] = useState(is_completed);
     const [priority, setPriority] = useState(id_priority);
 
     const handleChange = () => {
-        setCompleted(!completed);    
+        setCompleted(!completed);
         let body = {
             is_completed: completed ? 0 : 1
         };
@@ -23,9 +23,12 @@ function TastkList(props) {
           },
           body: myJSON,
         })
-          .then((response) => response.json())
-          .then((data) => console.log(data))
-          .catch((error) => console.error(error));
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+            onFinished(data.data);
+        })
+        .catch((error) => console.error(error));      
     };
 
     const handleClickRemove = () => {
@@ -69,13 +72,8 @@ function TastkList(props) {
                 onPriority(data.data);
             })
             .catch((error) => console.error(error));      
-    };
-      
-    useEffect(()=>
-    {
+    };      
 
-    }
-    , [])
 
   return (
     <>
@@ -93,7 +91,7 @@ function TastkList(props) {
                   ? 
                   (
                     <input
-                      onChange={handleChange}
+                      onClick={handleChange}
                       className="checkboxFinished"
                       type="checkbox"
                       defaultChecked
@@ -102,7 +100,7 @@ function TastkList(props) {
                   : 
                   (
                     <input
-                      onChange={handleChange}
+                      onClick={handleChange}
                       className="checkboxFinished"
                       type="checkbox"
                     />
@@ -125,7 +123,7 @@ function TastkList(props) {
               <span>
                 <u>Deadline le :</u> &nbsp; 
                 {
-                new Date(deadline_date).toLocaleDateString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
+                new Date(deadline_date).toLocaleDateString('fr-FR', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' , hour: 'numeric' })
                 }
               </span>
               <div className="prioritiesbtn">

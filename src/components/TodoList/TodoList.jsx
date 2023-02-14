@@ -4,7 +4,7 @@ import { HiMagnifyingGlassPlus, HiArrowTopRightOnSquare , HiXCircle } from 'reac
 import { useState } from 'react';
 
 function TodoList(props) {
-  let { id, title, description, is_favorite } = props;
+  let { id, title, description, is_favorite , setScreen} = props;
 
   const [favorite, setFavorite] = useState(is_favorite);
 
@@ -29,19 +29,22 @@ function TodoList(props) {
       .catch((error) => console.error(error));
   };
 
+  const toto = (e) => {
+    console.log(e.currentTarget.id);
+};
+
   return (
     <>
       <div className="TodoBox container">
-
 
         <div>
           <h2>
             {id} ► <u>{title}</u>
               <span className="text-danger px-4" onClick={handleClick}> {favorite ? <MdOutlineFavorite /> : <MdOutlineFavoriteBorder />}</span>
             <div className="btn-container">
-              <span className="text-primary px-1"> <HiMagnifyingGlassPlus/> </span>
-              <span className="text-secondary px-1"> <HiArrowTopRightOnSquare/></span>
-              <span className="text-danger px-1"> <HiXCircle/> </span>
+              <span onClick={toto} id="TaskListScreen" className="text-primary px-1"> <HiMagnifyingGlassPlus/> </span>
+              <span onClick={toto} id="TodoEditorScreen" className="text-secondary px-1"> <HiArrowTopRightOnSquare/></span>
+              <span onClick={toto} id="" className="text-danger px-1"> <HiXCircle/> </span>
             </div>
           </h2>
           <h5><i>{description}</i></h5>

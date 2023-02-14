@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 import TodoList from "../../components/TodoList/TodoList";
 import './TodoListScreen.css';
 
-function TodoListScreen() 
+function TodoListScreen(props) 
 {
+
+    const { setScreen } = props;
+
     const [todoList, setTodoList] = useState([]);
 
     useEffect(()=>
@@ -33,7 +36,7 @@ function TodoListScreen()
                         return (
 
                                     <div className="todo-box" key={id}>
-                                        {<TodoList id={id} description={description} title={title} is_favorite={is_favorite} />}
+                                        {<TodoList id={id} description={description} title={title} is_favorite={is_favorite} setScreen={setScreen} />}
                                     </div>
 
                                 )
