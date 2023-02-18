@@ -1,5 +1,14 @@
-function LoginScreen() 
+import useLocalStorage from "../../hooks/useLocalStorage";
+import { AuthContext } from "../../contexts/AuthContext";
+import { useContext } from "react";
+import useCookie from "../../hooks/useCookie";
+
+function LoginScreen(props) 
 {
+    // const[auth, setAuth] = useLocalStorage("auth",null);
+    const {auth, setAuth} = useContext(AuthContext);
+    const [authCookie, setAuthCookie] = useCookie("auth");
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -15,12 +24,29 @@ function LoginScreen()
             body,
         })
             .then (resp=>resp.json())
-            .then(json=> console.log(json))
+            .then(json=> {
+                console.log(json);
+                console.log("jsondata: "+JSON.stringify(json.data));
+                setAuth(json.data);
+                setAuthCookie(json.token ?? null, {"max-age":`${60*60*24}`});
+            })
+                
             .catch(error => console.error(error))
     };
 
+    const handleLogout = (e) => {
+        setAuth(null);
+        setAuthCookie(null);
+    }
+
     return ( 
-    <>            
+    <>
+    {auth && (
+        <button className="btn btn-primary" onClick={handleLogout}>
+            Logout
+        </button>
+    )}
+    {!auth && (
         <form onSubmit={handleSubmit}>
             <div className="mb-3">
                 <label htmlFor="exampleInputEmail1" className="form-label">
@@ -46,12 +72,19 @@ function LoginScreen()
                 />
             </div>
 
+            
 
-            <button type="submit" className="btn btn-primary">
+
+            <button type="submit" className="btn btn-primary mx-2">
                 Login
             </button>
 
+            <button className="btn btn-primary mx-2" onClick={handleLogout}> 
+                Logout
+            </button>
+
         </form>
+    )}
     </>);
 }
 

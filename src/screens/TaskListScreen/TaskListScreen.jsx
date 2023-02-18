@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 import TaskList from "../../components/TaskList/TastkList";
+import useLocalStorage from "../../hooks/useLocalStorage";
 import './TaskListScreen.css';
 
 function TaskListScreen()
 {
+    //hooks
     const [taskList, setTaskList] = useState([]);
+    const [auth, setAuth] = useLocalStorage('auth', { email: 'not logged' });
+    const { email } = auth;
 
     useEffect(()=>
     {
@@ -25,7 +29,7 @@ function TaskListScreen()
         <>
         {console.log(taskList)}
             <div className="task-container">
-            <h1>Bonjour, {localStorage.getItem('userMail')}</h1>
+            <h1>Bonjour, {email}</h1>
             
             <pre>Voici la liste tasks liées à la todo : </pre>
             <pre>(afficher ici la todo)</pre>

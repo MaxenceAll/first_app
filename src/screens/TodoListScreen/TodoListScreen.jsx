@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import TodoList from "../../components/TodoList/TodoList";
+import useLocalStorage from "../../hooks/useLocalStorage";
 import './TodoListScreen.css';
 
 function TodoListScreen(props) 
@@ -7,7 +8,10 @@ function TodoListScreen(props)
 
     const { setScreen } = props;
 
-    const [todoList, setTodoList] = useState([]);
+    //hooks:
+    const [todoList, setTodoList] = useState([]);    
+    const [auth, setAuth] = useLocalStorage('auth', { email: 'not logged' });
+    const { email } = auth;
 
     useEffect(()=>
     {
@@ -21,10 +25,11 @@ function TodoListScreen(props)
     }
     , [])
 
+
     return ( 
     <>            
         <div className="">
-            <h1>Bonjour {localStorage.getItem('userMail')}</h1>
+            <h1>Bonjour {email}</h1>
             Voici la liste des choses à faire !
 
             <div className="todos-container">
