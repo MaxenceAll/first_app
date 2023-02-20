@@ -2,6 +2,7 @@ import useLocalStorage from "../../hooks/useLocalStorage";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useContext } from "react";
 import useCookie from "../../hooks/useCookie";
+import fetcher from "../../helpers/fetcher";
 
 function LoginScreen(props) 
 {
@@ -10,28 +11,16 @@ function LoginScreen(props)
     const [authCookie, setAuthCookie] = useCookie("auth");
 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const form = e.currentTarget;
         const formData = new FormData(form);
         const jsonData = Object.fromEntries(formData.entries());
-        const body = JSON.stringify(jsonData);
-        fetch("http://localhost:1337/login" , {
-            method: "post",
-            headers: {
-                "content-type": "application/json",
-            },
-            body,
-        })
-            .then (resp=>resp.json())
-            .then(json=> {
-                console.log(json);
-                console.log("jsondata: "+JSON.stringify(json.data));
-                setAuth(json.data);
-                setAuthCookie(json.token ?? null, {"max-age":`${60*60*24}`});
-            })
-                
-            .catch(error => console.error(error))
+        // const body = JSON.stringify(jsonData);
+        const resp = await fetcher.post("login", jsonData);
+        console.log(resp);
+        setAuth(resp.data);
+        setAuthCookie(resp.token ?? null, {"max-age":`${60*60*24}`});
     };
 
     const handleLogout = (e) => {

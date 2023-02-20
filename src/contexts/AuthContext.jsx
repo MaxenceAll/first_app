@@ -1,5 +1,7 @@
 import { createContext, useState , useMemo, useEffect } from 'react';
 
+import fetcher from '../helpers/fetcher';
+
 const AuthContext = createContext();
 
 const AuthProvider = ( {children} ) => {
@@ -9,14 +11,13 @@ const AuthProvider = ( {children} ) => {
 
 
     useEffect(()=>{
-
-        fetch("http://localhost:1337/auth", {credentials: "include"})
-            .then ((resp) => resp.json())
-            .then ((json) => {
-                console.log(json);
-                setAuth(json.data);
-            })
-            .catch((error) => console.log(error));
+        const doFetch = async() => {
+            const resp = await fetcher.get("auth");
+            console.log(resp);
+            setAuth(resp.data);
+        }
+        doFetch();
+       
     },[]);
 
     return(
