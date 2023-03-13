@@ -14,7 +14,7 @@ function TaskListScreen()
     {
         const fetchData = async () =>
         {
-            const resp = await fetch("http://localhost:1337/task");
+            const resp = await fetch("http://localhost:5000/task");
             const taskListData = await resp.json();
             setTaskList(taskListData.data);
         }

@@ -8,7 +8,7 @@ function LandingScreen(props) {
     return ( 
     <div className="text-center pt-2">
         <LoginScreen />
-        <PincodeInput  setScreen={setScreen} />
+        {/* <PincodeInput  setScreen={setScreen} /> */}
     </div> );
 }
 

@@ -16,7 +16,7 @@ function TastkList(props) {
             is_completed: completed ? 0 : 1
         };
         const myJSON = JSON.stringify(body);
-        fetch("http://localhost:1337/task/" + id, {
+        fetch("http://localhost:5000/task/" + id, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -36,7 +36,7 @@ function TastkList(props) {
         id
         };
         const myJSON = JSON.stringify(body);
-        fetch("http://localhost:1337/task/" + id, {
+        fetch("http://localhost:5000/task/" + id, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",
@@ -59,7 +59,7 @@ function TastkList(props) {
           id_priority: priority
         };
         const myJSON = JSON.stringify(body);
-        fetch("http://localhost:1337/task/" + id, {
+        fetch("http://localhost:5000/task/" + id, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",

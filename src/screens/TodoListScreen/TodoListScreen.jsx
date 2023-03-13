@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import TodoList from "../../components/TodoList/TodoList";
+import { AuthContext } from "../../contexts/AuthContext";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import './TodoListScreen.css';
 
@@ -10,14 +11,15 @@ function TodoListScreen(props)
 
     //hooks:
     const [todoList, setTodoList] = useState([]);    
-    const [auth, setAuth] = useLocalStorage('auth', { email: 'not logged' });
+    // const [auth, setAuth] = useLocalStorage('auth', { email: 'not logged' });
+    const {auth, setAuth} = useContext(AuthContext);
     const { email } = auth;
 
     useEffect(()=>
     {
         const fetchData = async () =>
         {
-            const resp = await fetch("http://localhost:1337/todo");
+            const resp = await fetch("http://localhost:5000/todo");
             const todoListData = await resp.json();
             setTodoList(todoListData.data);
         }

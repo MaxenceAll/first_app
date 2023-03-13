@@ -12,7 +12,7 @@ function TodoEditorScreen()
     {
         const fetchDataTodo = async () =>
         {
-            const resp = await fetch(`http://localhost:1337/todo`);
+            const resp = await fetch(`http://localhost:5000/todo`);
             const todoListData = await resp.json();
             setTodoList(todoListData.data);
         }
@@ -20,7 +20,7 @@ function TodoEditorScreen()
 
         const fetchDataUsers = async () =>
         {
-            const resp = await fetch(`http://localhost:1337/customer`);
+            const resp = await fetch(`http://localhost:5000/customer`);
             const userListData = await resp.json();
             setuserList(userListData.data);
         }

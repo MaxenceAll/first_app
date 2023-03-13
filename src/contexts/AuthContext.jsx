@@ -13,12 +13,14 @@ const AuthProvider = ( {children} ) => {
     useEffect(()=>{
         const doFetch = async() => {
             const resp = await fetcher.get("auth");
-            console.log(resp);
+            // console.log(resp);
             setAuth(resp.data);
         }
         doFetch();
        
     },[]);
+
+    // console.log(auth);
 
     return(
 

@@ -61,7 +61,7 @@ function TodoEditor(props) {
               };
               const myJSON = JSON.stringify(body);
               console.log("json:", myJSON);
-              fetch("http://localhost:1337/todo", {
+              fetch("http://localhost:5000/todo", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -85,7 +85,7 @@ function TodoEditor(props) {
               };
               const myJSON = JSON.stringify(body);
               console.log("json:", myJSON);
-              fetch("http://localhost:1337/todo/" + id, {
+              fetch("http://localhost:5000/todo/" + id, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -105,7 +105,7 @@ function TodoEditor(props) {
               };
               const myJSON = JSON.stringify(body);
               console.log("json:", myJSON);
-              fetch("http://localhost:1337/todo/" + id, {
+              fetch("http://localhost:5000/todo/" + id, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
@@ -125,7 +125,7 @@ function TodoEditor(props) {
               };
               const myJSON = JSON.stringify(body);
               console.log("json:", myJSON);
-              fetch("http://localhost:1337/todo/" + id, {
+              fetch("http://localhost:5000/todo/" + id, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",

@@ -15,16 +15,24 @@ const request = async (endpoint, params, method = "get", body = null ) =>
             "content-type": "application/json",
         },
         ...params
+        
     }
-    if (body && method !== "get") options.body = JSON.stringify(body);
+    // console.log(url)
+    if (body && method !== "get") {
+        options.body = JSON.stringify(body);
+    }
     try
     {
+        console.log(url)
+        console.log(options)
         const resp = await fetch(url, options);
-        const json = await resp.json();
+        const json = await resp.json();        
+        console.log(json);
         return json;
     }
     catch (error)
     {
+        console.log("catch!")
         return {data: null, result: false, message: error};
     }
 }
